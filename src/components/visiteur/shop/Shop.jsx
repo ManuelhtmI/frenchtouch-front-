@@ -1,15 +1,15 @@
 
 
-function Reserve() {
+function Shop() {
 
 
 
     return (
       <div>
-   bonjours
+          Shop
       </div>
     );
   }
   
-  export default Reserve;
+  export default Shop;
   
