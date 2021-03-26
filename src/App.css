@@ -1,0 +1,22 @@
+:root {
+  --main-font: ;
+  --secondary-font: ;
+  --third-font: ;
+  --main-color-font: ;
+  --secondary-color-font: ;
+  --spacing-medium: calc(var(--spacing) * 2);
+  --spacing-large: calc(var(--spacing) * 4);
+  --dark: rgb(42,33,37);
+  --light-color:rgb(245,223,217) ;
+  --secondary-color-light:  rgb(216,138,125);
+}
+
+* {
+  box-sizing: content-box;
+}
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+}
