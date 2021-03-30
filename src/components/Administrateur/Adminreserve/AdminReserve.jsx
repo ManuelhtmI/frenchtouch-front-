@@ -1,3 +1,4 @@
+import Nav from './../NavBar/Nav'
 
 
 function Reserve() {
@@ -6,7 +7,8 @@ function Reserve() {
 
     return (
       <div>
-   
+        <Nav />
+   bonjours
       </div>
     );
   }
