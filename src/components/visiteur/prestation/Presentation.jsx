@@ -6,6 +6,7 @@ import { FETCH } from "./../../../Fetch";
 
 function Presentation() {
   const [servicePresentation, setServicePresentation] = useState([]);
+  const [home, setHome] = useState([]);
 
   useEffect(() => {
     axios
@@ -13,8 +14,31 @@ function Presentation() {
       .then((res) => setServicePresentation(res.data));
   }, []);
 
+  useEffect(() => {
+    axios
+      .get(`${FETCH}/homes`)
+      .then((res) => setHome(res.data));
+  }, []);
+
   return (
-    <div className="ServicePrestations">
+    <div className="ServicePrestation">
+      <div>
+      <div className="imageAboutServices">
+      <div className="alignTitleService App">
+         <h1 className="titleAcceuilServices">Prestations</h1>
+       </div>
+       {home.map((home) => (
+         <div>
+           <img src={home.picture_about} className="imageAbout" alt="image_acceuil" />
+         </div>
+       ))} 
+      
+       </div>
+       
+  
+      </div>
+      
+      <div className="ServicePrestations">
         {servicePresentation.map((servicePresentation) => (
           <div className="PresentationStyle">
             <div className="imagePresentation">
@@ -26,15 +50,16 @@ function Presentation() {
             </div>
             <div className="vertical-line"></div>
             <div className="textPresentation">
-              <h1 className="titlePresentation">
+              <h3 className="titlePresentation">
                 {servicePresentation.title}{" "}
-              </h1>
+              </h3>
               <p className="descriptionPrestation">
                 {servicePresentation.description}
               </p>
             </div>
           </div>
         ))}
+        </div>
       </div>
   );
 }

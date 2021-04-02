@@ -1,5 +1,5 @@
 import { useState } from "react";
-import './AdminLogin.css';
+import "./AdminLogin.css";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -46,17 +46,19 @@ const AdminLogin = (props) => {
     e.preventDefault();
     if (email && password) {
       await axios
-        .post(`http://localhost:8000/api/login/`  , {
+        .post(`http://localhost:8000/api/login/`, {
           email,
           password,
         })
         .then((res) => res.data)
         .then((data) => {
-          localStorage.setItem("token",data.token);
-          console.log(data);
-          props.setConnected(true);
+          props.setToken(data.token);
+
+          // console.log(data);
+
           alert("Vous êtes connecté.e");
-          history.push("/admin");
+          // history.push("/admin");
+
         })
         .catch((err) => {
           confirmAlert({
@@ -85,9 +87,7 @@ const AdminLogin = (props) => {
     <div>
       <Header />
       <div>
-
         <Container component="main" maxWidth="xs">
-
           <CssBaseline />
           <div className={classes.paper}>
             <Avatar className={classes.avatar}>
@@ -134,12 +134,16 @@ const AdminLogin = (props) => {
               >
                 Se connecter
               </Button>
-              <div >
-                <Link className="passwordAdmin" to="/login/forgotten-password" variant="body2">
+              <div>
+                <Link
+                  className="passwordAdmin"
+                  to="/login/forgotten-password"
+                  variant="body2"
+                >
                   Mots de passe oublier ?
                 </Link>
               </div>
-              <div >
+              <div>
                 <Link to="" className="passwordAdmin" variant="body2">
                   {"Vous n'avez pas de compte ? S'inscrire"}
                 </Link>

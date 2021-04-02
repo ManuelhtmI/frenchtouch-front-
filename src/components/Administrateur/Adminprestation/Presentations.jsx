@@ -37,6 +37,7 @@ function Presentations() {
               .catch(function (erreur) {
                 console.log(erreur);
               });
+            window.history.go();
           },
         },
         {
@@ -59,6 +60,7 @@ function Presentations() {
               .catch(function (erreur) {
                 console.log(erreur);
               });
+            window.history.go();
           },
         },
         {
@@ -114,6 +116,7 @@ function Presentations() {
             label: "Oui",
             onClick: async () => {
               handleUpload(id);
+              window.history.go();
             },
           },
           {

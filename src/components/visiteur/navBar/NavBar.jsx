@@ -49,9 +49,12 @@ function NavBar() {
                 <Link className="router" to="/login">
                   LOGIN
                 </Link>
+                <Link className="router" to="/panier">
+                PANIER
+              </Link>
 
                 <a href="#" className="close">
-                  X
+                ✕
                 </a>
               </div>
             </div>
@@ -78,6 +81,9 @@ function NavBar() {
               </Link>
               <Link className="router" to="/login">
                 LOGIN
+              </Link>
+              <Link className="router" to="/panier">
+                PANIER
               </Link>
 
               <a href="#" className="close">
