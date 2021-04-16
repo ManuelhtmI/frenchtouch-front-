@@ -79,7 +79,7 @@ main {
 }
 
 a.router {
-  color: black;
+  color: var(--dark);
   padding: 18px 18px 18px 18px;
   letter-spacing: 1.5px;
 }
@@ -93,7 +93,11 @@ a.router.rdv {
   background-color: white;
 }
 
-@media screen and (max-width: 1225px) {
+.logoPanier{
+  height:20px;
+} 
+
+@media screen and (max-width: 1350px) {
   .items {
     display: none;
 
@@ -127,8 +131,11 @@ a.router.rdv {
   }
 .router{
   border-bottom: 1px solid var(--light);
-  width: 80%;
+  width: 70%;
   text-align:center;
+  font-weight: 400;
+    font-family:var(--secondary-font);
+
 
 } 
   .items:target a {

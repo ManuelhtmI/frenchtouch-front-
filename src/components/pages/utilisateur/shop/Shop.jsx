@@ -1,6 +1,8 @@
 import { useEffect } from 'react'
 import NavBar from './../navBar/NavBar'
-import Product from './../../../visiteur/shop/Product'
+import Shops from '../../../visiteur/shop/Products'
+import Footer from "./../../../visiteur/footer/Footer"
+
 
 
 
@@ -13,7 +15,8 @@ function Shop() {
   return (
     <div>
       <NavBar />
-      <Product />
+      <Shops />
+      <Footer />
  
     </div>
   );

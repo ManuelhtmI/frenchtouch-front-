@@ -1,6 +1,8 @@
 import { useEffect } from 'react'
 import NavBar from '../navBar/NavBar'
 import Home from  "./../../../visiteur/home/Home"
+import Footer from "./../../../visiteur/footer/Footer"
+
 
 
 
@@ -12,8 +14,9 @@ function Homes() {
 
   return (
     <div>
-      <NavBar />
+      {/* <NavBar /> */}
       <Home />
+      <Footer />
  
     </div>
   );

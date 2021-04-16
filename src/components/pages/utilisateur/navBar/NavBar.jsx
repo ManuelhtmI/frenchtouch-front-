@@ -5,14 +5,14 @@ import NavBar from "../../../visiteur/navBar/NavBar";
 
 
 
-function Prestations() {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  });
+function Prestations( ) {
+  // useEffect(() => {
+  //   window.scrollTo(0, 0);
+  // });
 
   return (
     <div>
-      <NavBar />
+      <NavBar/>
      
     </div>
   );

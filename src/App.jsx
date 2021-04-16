@@ -1,18 +1,17 @@
 import "./App.css";
-// import Header from "./components/visiteur/header/Header";
-import Home from "./components/pages/utilisateur/home/Home";
-import Footer from "./components/visiteur/footer/Footer";
-import { Redirect, Route, Switch } from "react-router-dom";
-import AdminLogin from "./components/Adminlogin/AdminLogin";
-import Prestations from "./components/pages/utilisateur/prestation/Prestation";
-import CartGifts from "./components/pages/utilisateur/prestation/CartGift";
-import Reserves from "./components/pages/utilisateur/reserve/Reserve";
-import Paniers from "./components/pages/utilisateur/panier/Panier";
+import Home from "./components/visiteur/home/Home";
+import HomeAdmin from "./components/Administrateur/Adminhome/AdminHome";
+import { Route, Switch } from "react-router-dom";
+import AdminLogin from "./components/visiteur/Adminlogin/AdminLogin";
+import Prestations from "./components/visiteur/prestation/Presentation";
+import CartGifts from "./components/visiteur/prestation/CartGift";
+import Reserves from "./components/visiteur/reserve/Reserve";
+import Cart from "./components/visiteur/panier/Cart";
 
-import Books from "./components/pages/utilisateur/book/Book";
-import Shops from "./components/pages/utilisateur/shop/Shop";
-import Palettes from "./components/pages/utilisateur/palette/Palette";
-import Abouts from "./components/pages/utilisateur/about/About";
+import Books from "./components/visiteur/book/Book";
+import Products from "./components/visiteur/shop/Products";
+import Palettes from "./components/visiteur/palette/Palette";
+import Abouts from "./components/visiteur/about/About";
 import PrestationsAdmin from "./components/Administrateur/Adminprestation/AdminPrestation";
 import CartGiftsAdmin from "./components/Administrateur/Adminprestation/AdminGift";
 import ReservesAdmin from "./components/Administrateur/Adminreserve/AdminReserve";
@@ -21,52 +20,102 @@ import ShopsAdmin from "./components/Administrateur/Adminshop/AdminShop";
 import PalettesAdmin from "./components/Administrateur/Adminpalette/AdminPalette";
 import AboutsAdmin from "./components/Administrateur/Adminabout/AdminAbout";
 import Admin from "./components/Administrateur/Admin/Admin";
-import { useEffect, useState } from "react";
+import { useLayoutEffect, useEffect, useState } from "react";
 
 function setToken(userToken) {
-  sessionStorage.setItem('token', JSON.stringify(userToken));
-
+  sessionStorage.setItem("token", JSON.stringify(userToken));
 }
 function getToken() {
-  const tokenString = sessionStorage.getItem('token');
+  const tokenString = localStorage.getItem("token");
   // const userToken = JSON.parse(tokenString);
-  return tokenString
+  return tokenString;
 }
 
 function App() {
-  
+  const savedCart = localStorage.getItem("cart");
+  const [openFirst, setOpenFirst] = useState(false);
+  const [cart, setCart] = useState(savedCart ? JSON.parse(savedCart) : []);
+
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
+
+  //  const getCartReduce = () => {
+  //   return cart.reduce(
+  //     (sum, { quantity }) => sum + quantity,
+  //     0
+  //   );
+  // };
+
   return (
     <div className="">
       <Switch>
-        <Route exact path="/" component={Home} />
+        <Route exact path="/" component={Home}>
+          <Home cart={cart} />
+        </Route>
+
+        <Route path="/about" component={Abouts}>
+          <Abouts cart={cart} />
+        </Route>
+        <Route path="/prestations" component={Prestations}>
+          <Prestations cart={cart} />
+        </Route>
+
+        <Route path="/Gifts" component={CartGifts}>
+          <CartGifts cart={cart} />
+        </Route>
+        <Route path="/rendezvous" component={Reserves}>
+          <Reserves cart={cart} />
+        </Route>
+        <Route path="/book" component={Books}>
+          <Books cart={cart} />
+        </Route>
+        <Route path="/nuancier" component={Palettes}>
+          <Palettes cart={cart} />
+        </Route>
+
+        <Route path="/product" component={Products}>
+          <Products cart={cart} setCart={setCart} />
+        </Route>
+        <Route path="/cart" component={Cart}>
+          {" "}
+          <Cart cart={cart} setCart={setCart} />
+        </Route>
         <Route path="/login" component={AdminLogin}>
-          <AdminLogin setToken={setToken} />
+          <AdminLogin cart={cart} setToken={setToken} />
         </Route>
-        <Route path="/about" component={Abouts} />
-        <Route path="/prestations" component={Prestations} />
-        <Route path="/Gifts" component={CartGifts} />
-        <Route path="/rendezvous" component={Reserves} />
-        <Route path="/book" component={Books} />
-        <Route path="/shop" component={Shops} />
-        <Route path="/nuancier" component={Palettes} />
-        <Route path="/panier" component={Paniers} />
-
         <Route path="/admin" component={Admin}>
-          {getToken() ? <Admin /> : <Redirect to="/login" />}
+          {getToken() ? <Admin /> : <AdminLogin setToken={setToken} />}
         </Route>
-         <Route path="/services" component={PrestationsAdmin}> 
-        {getToken() ? <PrestationsAdmin/> : <Redirect to="/login"/> } 
-          </Route>   
-
-        <Route path="/about_admin" component={AboutsAdmin} />
-        <Route path="/prestations_admin" component={PrestationsAdmin} />
-        <Route path="/Gifts_admin" component={CartGiftsAdmin} />
-        <Route path="/rendezvous_admin" component={ReservesAdmin} />
-        <Route path="/book_admin" component={BooksAdmin} />
-        <Route path="/shop_admin" component={ShopsAdmin} />
-        <Route path="/nuancier_admin" component={PalettesAdmin} />
+        <Route path="/home_admin" component={HomeAdmin}>
+          {getToken() ? <HomeAdmin /> : <AdminLogin setToken={setToken} />}
+        </Route>
+        <Route path="/about_admin" component={AboutsAdmin}>
+          {getToken() ? <AboutsAdmin /> : <AdminLogin setToken={setToken} />}
+        </Route>
+        <Route path="/prestations_admin" component={PrestationsAdmin}>
+          {getToken() ? (
+            <PrestationsAdmin />
+          ) : (
+            <AdminLogin setToken={setToken} />
+          )}
+        </Route>
+        <Route path="/Gifts_admin" component={CartGiftsAdmin}>
+          {getToken() ? <CartGiftsAdmin /> : <AdminLogin setToken={setToken} />}
+        </Route>
+        <Route path="/rendezvous_admin" component={ReservesAdmin}>
+          {getToken() ? <ReservesAdmin /> : <AdminLogin setToken={setToken} />}
+        </Route>
+        <Route path="/book_admin" component={BooksAdmin}>
+          {getToken() ? <BooksAdmin /> : <AdminLogin setToken={setToken} />}
+        </Route>
+        <Route path="/shop_admin" component={ShopsAdmin}>
+          {getToken() ? <ShopsAdmin /> : <AdminLogin setToken={setToken} />}
+        </Route>
+        <Route path="/nuancier_admin" component={PalettesAdmin}>
+          {getToken() ? <PalettesAdmin /> : <AdminLogin setToken={setToken} />}
+        </Route>
       </Switch>
-      <Footer />
     </div>
   );
 }
