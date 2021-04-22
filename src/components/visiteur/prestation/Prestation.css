@@ -1,4 +1,156 @@
-h1 {
-    color: purple;
-    font-size:150px;
+
+.cartesService {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  color: var(--dark);
+}
+
+.carteService {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 680px;
+  padding: 8px;
+  margin: 2%;
+  background-color: var(--light-color);
+  border: 1px solid rgb(253, 253, 253);
+}
+.nameService {
+  color: var(--secondary-color-light);
+  font-weight: bold;
+}
+.titleService {
+  text-align: center;
+  font-size: 32px;
+}
+
+.imageService {
+  height: 250px;
+  width: 250px;
+}
+
+.imageServiceLign {
+  width: auto;
+  height: auto;
+  position: relative;
+  margin-left: 0;
+}
+
+.imageServiceLign::after,
+.imageServiceLign::before {
+  position: absolute;
+  height: 100%;
+  content: "";
+  width: 100%;
+  padding: 20px 0px;
+}
+
+.imageServiceLign::before {
+  border: 1px solid rgb(88, 87, 87);
+  padding: 0;
+  bottom: -4px;
+  right: -10px;
+  height: 270px;
+  width: 275px;
+}
+
+.descriptionService {
+  display: flex;
+  color: var(--dark);
+  font-weight: bold;
+}
+
+.servicePresta {
+  margin-left: 5%;
+}
+
+.filterCategory {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 1%;
+  padding-top: 3%;
+}
+
+.filterButtons {
+  display: flex;
+  flex-direction: row;
+  margin: 1%;
+}
+.filterButton {
+  color: var(--secondary-color-light);
+  margin: 1%;
+  padding: 8px;
+}
+.filterButtonCategory {
+  color: var(--secondary-color-light);
+}
+.filterButtonCategory {
+  border: 1px solid var(--light-color);
+  width: 160px;
+  border-radius: 5px;
+  background: #fff;
+  position: relative;
+}
+.filterButtonCategory select {
+  cursor: pointer;
+
+  padding: 5px 8px;
+  width: 90%;
+  border: none;
+  background-color: transparent;
+  -webkit-appearance: none;
+}
+.filterButtonCategory:after {
+  top: 50%;
+  left: 85%;
+  border: solid transparent;
+  content: " ";
+
+  position: absolute;
+  pointer-events: none;
+  border-color: rgba(0, 0, 0, 0);
+  border-top-color: var(--secondary-color-light);
+  border-width: 5px;
+  margin-top: -2px;
+  z-index: 100;
+}
+.filterButtonCategory select:focus {
+  outline: none;
+}
+
+.priceService,
+.timeService {
+  color: rgb(88, 87, 87);
+  margin-top: 2%;
+}
+.priceService {
+  margin-left: 20px;
+}
+
+@media screen and (max-width: 768px) {
+  .carteService {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+    margin: 3%;
+  }
+  .imageService {
+    height: 250px;
+    border-radius: 8px;
+    width: 300px;
+  }
+  .imageServiceLign::after {
+    display: none;
+  }
+  .imageServiceLign::before {
+    display: none;
+  }
 }

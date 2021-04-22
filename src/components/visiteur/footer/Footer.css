@@ -1,0 +1,16 @@
+.footer {
+    bottom:0;
+    width: 100%;
+    height: 200px;
+    background-color:  rgba(241,216,204,255);
+}
+
+.footerPages {
+    text-align: right;
+    margin-right: 200px;
+    padding-top: 15px;
+}
+
+.footerPages ul {
+    list-style-type: none;
+}
