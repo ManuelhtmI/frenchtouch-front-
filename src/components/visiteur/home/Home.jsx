@@ -6,9 +6,9 @@ import "./Home.css";
 import CarouselComent from "./CarouselComent";
 import Header from "./../navBar/NavBar";
 import Social from "../Social";
-import Footer from './../footer/Footer'
+import Footer from "./../footer/Footer";
 
-function Home({cart}) {
+function Home({ cart }) {
   const [getHome, setGetHome] = useState([]);
   const [isLoading, setLoading] = useState(false);
 
@@ -32,7 +32,7 @@ function Home({cart}) {
       />
       {isLoading
         ? getHome.map((res, index) => (
-            <div>
+            <div className="first-block">
               <div className="homeImgTop">
                 <div className="black-filter">
                   <img className="imgHome" src={res.picture_about} alt="" />
@@ -65,7 +65,7 @@ function Home({cart}) {
         : getHome.map((res) => (
             <div>
               <div className="homeImgTop" style={{ backgroundImage: "" }}>
-                <div className="alignTitle">
+                <div className="alignTitle App">
                   <h1 className="titleAcceuil">French Touch</h1>
                 </div>
                 <div className="prenezRdv">
