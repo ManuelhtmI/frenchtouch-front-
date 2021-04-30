@@ -30,13 +30,11 @@ function Home({ cart }) {
       <Header
         getCartReduce={cart.reduce((sum, { quantity }) => sum + quantity, 0)}
       />
-      {isLoading
+      {isLoading 
         ? getHome.map((res, index) => (
             <div className="first-block">
               <div className="homeImgTop">
-                <div className="black-filter">
                   <img className="imgHome" src={res.picture_about} alt="" />
-                </div>
                 <div className="alignTitle App">
                   <h1 className="titleAcceuil">French Touch</h1>
                 </div>
@@ -48,15 +46,13 @@ function Home({ cart }) {
                 <Social />
               </div>
               <div className="aboutRelative">
-                <div className="aboutH2">
-                  <h2>Á Propos</h2>
-                </div>
-                <div className="contentPosition">
-                  <div className="imgAboutContent App">
-                    <img src={res.picture_home} alt="" />
+                  <h2 className=" Homeabout">A Propos</h2>
+                <div className="contentPosition App">
+                  <div className="imgAboutContent ">
+                    <img className="imageAbout" src={res.picture_home} alt="" />
                   </div>
-                  <div className="cadreContent App">
-                    <h6>{res.content_about}</h6>
+                  <div className="cadreContent ">
+                    <p className="contentAbout">{res.content_about}</p>
                   </div>
                 </div>
               </div>
@@ -75,7 +71,7 @@ function Home({ cart }) {
                 </div>
                 <Social />
               </div>
-              <h2>Á Propos</h2>
+              <h2 className="App Homeabout">A Propos</h2>
               <div className="contentPosition">
                 <div className="imgAboutContent App">
                   <img src="" alt="Chargement" />
@@ -86,9 +82,6 @@ function Home({ cart }) {
               </div>
             </div>
           ))}
-      <div className="homeComent App">
-        <h2>Votre avis compte !</h2>
-      </div>
       <CarouselComent />
       <Footer />
     </div>
